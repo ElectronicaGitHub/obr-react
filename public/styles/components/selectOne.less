@@ -1,0 +1,28 @@
+.selectOne {
+	border: 1px solid black;
+	padding: 20px 0px;
+	width: 600px;
+	margin: 30px auto 0 auto;
+	text-align: center;
+	.title {
+		margin: 20px 0;
+	}
+	.button {
+		margin: 20px 30px;
+		display: inline-block;
+		background: lighten(grey, 30%);
+		padding: 10px 20px;
+		&.selected {
+			background: blue;
+			color: white;
+			font-weight: bold;
+			&.correct {
+				background: lighten(green, 30%);
+			}
+			&.error {
+				background: lighten(red, 30%);
+			}
+		}
+	}
+
+}
