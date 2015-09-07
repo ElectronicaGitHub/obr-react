@@ -5,15 +5,16 @@ require('./styles/app.less');
 // deps injection
 $ = require('jquery');
 var React = require('react');
-var store = require('./store');
+var eventer = require('./js/modules/eventer');
+var store = require('./js/modules/store');
 //
 
 
 // modules injection
-var builder = require('./js/builder.js');
-var _debugger = require('./js/debugger.js');
-var buttons = require('./js/buttons.js');
-var classes = require('./js/classes.js');
+var builder = require('./js/components/builder.js');
+var _debugger = require('./js/components/debugger.js');
+var buttons = require('./js/components/buttons.js');
+var classes = require('./js/components/classes.js');
 //
 
 store.getData(function (data) {

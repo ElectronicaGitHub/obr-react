@@ -1,10 +1,9 @@
 /** @jsx React.DOM */
 var React = require('react');
-var store = require('../store');
-var checker = require('../checker');
-console.log('checker', checker);
+var store = require('../modules/store');
+var checker = require('../modules/checker');
 
-require('../styles/components/buttons.less');
+require('../../styles/components/buttons.less');
 
 module.exports = React.createClass({
     displayName: 'buttons',
@@ -21,7 +20,7 @@ module.exports = React.createClass({
 var methods = {
 	check : function () {
 		checker.check(function (data) {
-			console.log('check callback', data);
+			// console.log('check callback', data);
 		});
 	}
 }

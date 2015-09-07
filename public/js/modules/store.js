@@ -1,6 +1,7 @@
 'use strict';
 
 var $ = require('jquery');
+var eventer = require('./eventer');
 
 var scope = {
 	data : null
@@ -32,19 +33,22 @@ var store = {
 				}
 			}
 		},
-		on : function (event, cb, id) {
+		on : function (event, cb, componentId) {
+			console.log('on:' + event, componentId);
 			store.callback[event] = store.callback[event] || [];
-			if (id) {
+			if (componentId) {
 				for (var i in scope.data.components) {
-					if (scope.data.components[i].id == id) {
+					if (scope.data.components[i].id == componentId) {
 						store.callback[event].push(cb.bind(null, scope.data.components[i]));
 					}
 				}
 			} else {
 				store.callback[event].push(cb.bind(null, scope.data));
 			}
+			console.log(store.callback, 'from', componentId);
 		},
 		emit : function (event) {
+			console.log('emit:' + event);
 			for (var i in store.callback[event]) {
 				store.callback[event][i]();
 			}

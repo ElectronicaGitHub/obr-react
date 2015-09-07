@@ -1,16 +1,21 @@
 /** @jsx React.DOM */
 
-require('../styles/components/textBlock.less');
-require('../styles/components/selectOne.less');
+require('../../styles/components/textBlock.less');
+require('../../styles/components/selectOne.less');
 
 var React = require('react/addons');
-var store = require('../store');
+var store = require('../modules/store');
+var logger = require('../modules/logger');
+var eventer = require('../modules/eventer');
 
 module.exports = {
 	textBlock : React.createClass({
 	    displayName: 'textBlock',
+	    componentWillMount: function () {
+	    	logger.info('loading', this.constructor.displayName, this.props.id);
+	    },
 	    componentDidMount: function () {
-	        console.log(this.props);  
+	    	logger.info('ready', this.constructor.displayName, this.props.id);
 	    },
 	    render: function () {
 	    	var cx = React.addons.classSet;
@@ -34,12 +39,16 @@ module.exports = {
 		    };
 		},
 		selectOne : function (el) {
-			console.log('update', el);
 			var update_obj = { selected : el.id };
 			this.setState(update_obj);
 			store.update(this.props.id, update_obj);
 		},
+		componentWillMount: function () {
+	    	logger.info('loading', this.constructor.displayName, this.props.id);
+	    },
 		componentDidMount: function () {
+	    	logger.info('ready', this.constructor.displayName, this.props.id);
+
 			var self = this;
 			store.on('dataUpdate', function (data) {
 				console.log('selectOne:dataUpdate', data);

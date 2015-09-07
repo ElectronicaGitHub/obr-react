@@ -1,5 +1,7 @@
 var React = require('react/addons');
-var store = require('../store');
+var store = require('../modules/store');
+var eventer = require('../modules/eventer');
+var logger = require('../modules/logger');
 
 module.exports = React.createClass({
 	displayName : 'debugger',
@@ -11,7 +13,7 @@ module.exports = React.createClass({
 	componentDidMount: function () {
 		var self = this;
 		store.on('dataUpdate', function (data) {
-			console.log('debugger:dataUpdate', data);
+			logger.info('dataUpdate', self.constructor.displayName, 'NO-ID');
 			self.setState({
 				data : JSON.stringify(data)
 			})
